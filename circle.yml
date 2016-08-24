@@ -4,6 +4,12 @@ machine:
   post:
     - npm install -g npm@3.x.x
 
+dependencies:
+  pre:
+    - npm uninstall -g angular-cli
+    - npm cache clean
+    - npm install -g angular-cli
+
 test:
   override:
     - echo "skip test"
