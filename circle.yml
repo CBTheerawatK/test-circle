@@ -6,6 +6,7 @@ machine:
 
 dependencies:
   pre:
+    - rm -rf node_modules/
     - npm uninstall -g angular-cli
     - npm cache clean
     - npm install -g angular-cli
