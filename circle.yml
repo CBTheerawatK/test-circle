@@ -14,18 +14,17 @@ deployment:
   production:
     branch: circleci
     commands:
+      - APP_NAME="test-heroku-1213"
       - rm -rf heroku-deployment
-      - git clone --depth 1 git@heroku.com:test-heroku-1213.git heroku-deployment
+      - git clone --depth 1 git@heroku.com:${APP_NAME}.git heroku-deployment
       - rm -rf heroku-deployment/*
       - cp heroku/* heroku-deployment
       - mv dist heroku-deployment
-      - git config user.email "tesserax@cubiccreative.org":
-          pwd: heroku-deployment
-      - git config user.name "Tesserax":
-          pwd: heroku-deployment
+      - git config user.email "tesserax@cubiccreative.org"
+      - git config user.name "Tesserax"
       - git add -A:
           pwd: heroku-deployment
       - git commit -m "heroku deployment":
           pwd: heroku-deployment
-      - git push -f git@heroku.com:test-heroku-1213.git HEAD:master:
+      - git push -f git@heroku.com:${APP_NAME}.git HEAD:master:
           pwd: heroku-deployment
