@@ -5,9 +5,9 @@ var app = express();
 var server = http.createServer(app);
 var port = process.env.PORT || 8080;
 
-app.use(express.static(__dirname + "/published"));
+app.use(express.static(__dirname + "/dist"));
 app.get('/*', function(req, res) {
-  res.sendFile(path.resolve(__dirname + '/published/index.html'));
+  res.sendFile(path.resolve(__dirname + '/dist/index.html'));
 });
 
 server.listen(port, function() {
