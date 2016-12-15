@@ -27,5 +27,5 @@ deployment:
           pwd: heroku-deployment
       - git commit -m "heroku deployment":
           pwd: heroku-deployment
-      - git push -f git@heroku.com:test-heroku-1213.git $CIRCLE_BRANCH:master:
+      - git push -f git@heroku.com:test-heroku-1213.git HEAD:master:
           pwd: heroku-deployment
