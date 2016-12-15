@@ -1,16 +1,25 @@
 machine:
   node:
-    version: 6.2.0
+    version: 6.5.0
   post:
     - npm install -g npm@3.x.x
 
-dependencies:
-  pre:
-    - rm -rf node_modules/
-    - npm uninstall -g angular-cli
-    - npm cache clean
-    - npm install -g angular-cli
-
 test:
+  pre:
+    - rm -rf dist tmp
   override:
-    - echo "skip test"
+    - npm run build-heroku
+
+deployment:
+  production:
+    branch: circleci
+    commands:
+      - rm -rf published
+      - mv dist published
+      - ls -la
+      - git config user.email "tesserax@cubiccreative.org"
+      - git config user.name "Tesserax"
+      - git add -a
+      - git status
+      - git commit -m "heroku deployment"
+      - git push -f git@heroku.com:test-heroku-1213.git $CIRCLE_SHA1:refs/heads/master
