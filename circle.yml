@@ -22,6 +22,5 @@ deployment:
       - git add -A
       - git status
       - git commit -m "heroku deployment"
-      - git fetch --unshallow
-      - git push -f git@heroku.com:test-heroku-1213.git $CIRCLE_SHA1:refs/heads/master
+      - git push -f git@heroku.com:test-heroku-1213.git circleci:master
       - heroku run rake db:migrate --app test-heroku-1213
