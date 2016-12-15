@@ -14,13 +14,13 @@ deployment:
   production:
     branch: circleci
     commands:
+      - echo $CIRCLE_SHA1
+      - echo $CIRCLE_BRANCH
       - rm -rf published
       - mv dist published
       - ls -la
       - git config user.email "tesserax@cubiccreative.org"
       - git config user.name "Tesserax"
       - git add -A
-      - git status
       - git commit -m "heroku deployment"
-      - git push -f git@heroku.com:test-heroku-1213.git circleci:master
-      - heroku run rake db:migrate --app test-heroku-1213
+      - git push -f git@heroku.com:test-heroku-1213.git $CIRCLE_BRANCH:master
