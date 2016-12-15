@@ -19,8 +19,10 @@ deployment:
       - rm -rf heroku-deployment/*
       - cp heroku/* heroku-deployment
       - mv dist heroku-deployment
-      - git config user.email "tesserax@cubiccreative.org"
-      - git config user.name "Tesserax"
+      - git config user.email "tesserax@cubiccreative.org":
+          pwd: heroku-deployment
+      - git config user.name "Tesserax":
+          pwd: heroku-deployment
       - git add -A:
           pwd: heroku-deployment
       - git commit -m "heroku deployment":
