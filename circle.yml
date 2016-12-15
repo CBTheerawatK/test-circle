@@ -17,9 +17,10 @@ deployment:
       - rm -rf published
       - mv dist published
       - ls -la
+      - git remote add heroku git@heroku.com:test-heroku-1213.git
       - git config user.email "tesserax@cubiccreative.org"
       - git config user.name "Tesserax"
       - git add -A
       - git status
       - git commit -m "heroku deployment"
-      - git push -f git@heroku.com:test-heroku-1213.git $CIRCLE_SHA1:refs/heads/master
+      - git push -f heroku $CIRCLE_SHA1:refs/heads/master
